@@ -37,9 +37,11 @@ describe('Main', () => {
 
   describe('Generic Search', () => {
     let fetchedStud;
+    let promise;
 
     beforeEach(() => {
       fetchedStud = sinon.stub(global, 'fetch');
+      promise = fetchedStud.returnsPromise();
     });
 
     afterEach(() => {
@@ -73,6 +75,13 @@ describe('Main', () => {
           'https://api.spotify.com/v1/search?q=Incubus&type=artist,album',
         );
       });
+    });
+
+    it('should return the JSON data from the Promise', () => {
+      promise.resolves({ body: 'json' });
+      const artists = search('Incubus', 'artist');
+
+      expect(artists.resolveValue).to.be.eql({ body: 'json' });
     });
   });
 });
