@@ -25,4 +25,11 @@ describe('Main', () => {
       expect(searchPlaylists).to.exist;
     });
   });
+
+  describe('Generic Search', () => {
+    // https://api.spotify.com/v1/search
+    it('should call fetch function', () => {
+      const artists = search();
+    });
+  });
 });
