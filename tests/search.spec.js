@@ -5,14 +5,14 @@ import sinonStubPromise from 'sinon-stub-promise';
 
 import {
   search, searchAlbums, searchArtists, searchTracks, searchPlaylists,
-} from '../src/main';
+} from '../src/search';
 
 chai.use(sinonChai);
 sinonStubPromise(sinon);
 
 global.fetch = require('node-fetch');
 
-describe('Main', () => {
+describe('Search', () => {
   let fetchedStub;
   let promise;
 
